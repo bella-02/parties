@@ -12,6 +12,8 @@
     <link rel="stylesheet" href="styles/party-styles.css">
 </head>
 
+
+
 <body>
     <div class="container">
         <h1>Wren's First Birthday</h1>
@@ -22,30 +24,28 @@
             <h2>Theme</h2>
             <ul class="cute-list">
                 <h3>It's Fun to be One</h3>
-                <h3>Colors:
-                    <a href="https://coolors.co/ffadad-ffd6a5-fdffb6-caffbf-9bf6ff-a0c4ff-bdb2ff-ffc6ff-fffffc" target="_blank">View Palette</a>
-                </h3>
-                
-                <div class="color-row">
-                    <div class="color-box"></div>
-                    <div class="color-box"></div>
-                    <div class="color-box"></div>
-                    <div class="color-box"></div>
-                    <div class="color-box"></div>
-                    <div class="color-box"></div>
-                    <div class="color-box"></div>
-                    <div class="color-box"></div>
-                    <div class="color-box"></div>
-
-                </div>
-                
             </ul>
+            <h2>Colors:
+            </h2>
+
+            <div class="color-row">
+                <div class="color-box"></div>
+                <div class="color-box"></div>
+                <div class="color-box"></div>
+                <div class="color-box"></div>
+                <div class="color-box"></div>
+                <div class="color-box"></div>
+                <div class="color-box"></div>
+                <div class="color-box"></div>
+                <div class="color-box"></div>
+
+            </div>
 
             <div class="links">
-                <a href="https://pin.it/16NdzNxW2"
-                    target="_blank">Pinterest Board</a>
-                <a href="https://www.etsy.com/search?q=first%20birthday%20decorations%20girl" target="_blank">Etsy
-                    Decorations</a>
+                <a href="https://coolors.co/ffadad-ffd6a5-fdffb6-caffbf-9bf6ff-a0c4ff-bdb2ff-ffc6ff-fffffc"
+                    target="_blank">View
+                    Palette</a>
+                <a href="https://pin.it/16NdzNxW2" target="_blank">Pinterest Board</a>
             </div>
         </section>
 
@@ -78,10 +78,20 @@
 
         <!-- Notes -->
         <section class="card">
-            <h2>🖊️ Notes</h2>
-            <textarea placeholder="Write ideas, vendors, reminders..."></textarea>
+            <h2>🎁 Birthday Gift Ideas</h2>
+
+            <div class="gift-input">
+                <input id="gift-text" type="text" placeholder="Add a gift idea...">
+                <button id="add-gift">Add Gift</button>
+            </div>
+
+            <ul id="gift-list"></ul>
         </section>
+
+
     </div>
 </body>
+
+<script src="scripts/gifts.js"></script>
 
 </html>

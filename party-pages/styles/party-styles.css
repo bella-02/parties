@@ -19,7 +19,7 @@
 body {
     margin: 0;
     font-family: var(--font-main);
-    background: linear-gradient(135deg, #ffe6f2, #e6f7ff);
+    background: linear-gradient(150deg, var(--pink), var(--orange), var(--yellow), var(--green), var(--blue), var(--violet), var(--purple), var(--lilac), var(--white));
     padding: 30px;
 }
 
@@ -176,4 +176,60 @@ h3 a:hover {
 
 .color-box:nth-child(9) {
     background: var(--white);
+}
+
+/* Gift Ideas */
+.gift-input {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+#g i f t-text {
+    flex: 1;
+    padding: 10px;
+    border-radius: 10px;
+    border: 2px solid var(--pink);
+    font-size: 1rem;
+}
+
+#add-gift {
+    padding: 10px 16px;
+    background: var(--pink);
+    color: var(--white);
+    border: none;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+#add-gift:hover {
+    background: var(--violet);
+    color: var(--white);
+}
+
+#gift-list {
+    list-style: none;
+    padding: 0;
+}
+
+#gift-list li {
+    padding: 10px 14px;
+    border-radius: 10px;
+    margin-bottom: 8px;
+    border: 2px solid var(--orange);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.remove-btn {
+    background: var(--blush);
+    border: none;
+    color: var(--violet);
+    padding: 4px 8px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.8rem;
 }
