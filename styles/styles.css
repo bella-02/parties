@@ -1,0 +1,58 @@
+/* Soft pastel background */
+body {
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+    background: linear-gradient(135deg, #ffe6f2, #e6f7ff);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Center card */
+.container {
+    background: white;
+    padding: 40px 50px;
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 400px;
+}
+
+/* Title styling */
+h1 {
+    margin-top: 0;
+    color: #ff80b3;
+    font-size: 2rem;
+}
+
+/* Subtitle */
+.subtitle {
+    color: #666;
+    margin-bottom: 30px;
+}
+
+/* Navigation buttons */
+.nav-links {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.nav-btn {
+    text-decoration: none;
+    background: #ffd6e7;
+    padding: 12px 20px;
+    border-radius: 12px;
+    color: #cc2e72;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    border: 2px solid transparent;
+}
+
+/* Hover effect */
+.nav-btn:hover {
+    background: #fff;
+    border-color: #ff80b3;
+    transform: translateY(-3px);
+}
