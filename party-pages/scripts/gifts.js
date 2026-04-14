@@ -50,3 +50,57 @@ function removeGift(gift) {
     gifts = gifts.filter(item => item !== gift);
     localStorage.setItem("birthdayGifts", JSON.stringify(gifts));
 }
+
+
+const checkInput = document.getElementById("check-text");
+const addCheckButton = document.getElementById("add-check");
+const checkList = document.getElementById("check-list");
+
+// Load saved tasks
+window.addEventListener("load", () => {
+    const savedChecks = JSON.parse(localStorage.getItem("birthdayChecklist")) || [];
+    savedChecks.forEach(task => addCheckToDOM(task));
+});
+
+// Add task
+addCheckButton.addEventListener("click", () => {
+    const task = checkInput.value.trim();
+    if (task === "") return;
+
+    addCheckToDOM(task);
+    saveCheck(task);
+
+    checkInput.value = "";
+});
+
+// Add task to DOM
+function addCheckToDOM(task) {
+    const li = document.createElement("li");
+    li.textContent = task;
+
+    const removeBtn = document.createElement("button");
+    removeBtn.textContent = "Remove";
+    removeBtn.classList.add("remove-btn");
+
+    removeBtn.addEventListener("click", () => {
+        li.remove();
+        removeCheck(task);
+    });
+
+    li.appendChild(removeBtn);
+    checkList.appendChild(li);
+}
+
+// Save task
+function saveCheck(task) {
+    const tasks = JSON.parse(localStorage.getItem("birthdayChecklist")) || [];
+    tasks.push(task);
+    localStorage.setItem("birthdayChecklist", JSON.stringify(tasks));
+}
+
+// Remove task
+function removeCheck(task) {
+    let tasks = JSON.parse(localStorage.getItem("birthdayChecklist")) || [];
+    tasks = tasks.filter(item => item !== task);
+    localStorage.setItem("birthdayChecklist", JSON.stringify(tasks));
+}

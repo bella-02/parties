@@ -23,10 +23,19 @@ body {
     padding: 30px;
 }
 
+.header {
+    padding: 100px;
+    background: url("../images/cloud-border.svg") center/contain no-repeat;
+
+}
+
 .container {
     max-width: 700px;
     margin: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
 }
+
 
 h1, h2, h3{
     font-family: var(--font-accent);
@@ -47,9 +56,15 @@ h1 {
 .card {
     background: white;
     padding: 25px;
+    margin: 15px;
     border-radius: 20px;
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
     margin-bottom: 25px;
+}
+
+.card:nth-child(1), .card:nth-child(6) {
+    grid-column-start: 1;
+    grid-column-end: 3;
 }
 
 .card h2 {
@@ -178,8 +193,8 @@ h3 a:hover {
     background: var(--white);
 }
 
-/* Gift Ideas */
-.gift-input {
+/* Gift Ideas and Checklist*/
+.gift-input, .checklist-input {
     display: flex;
     gap: 10px;
     margin-bottom: 15px;
@@ -193,7 +208,7 @@ h3 a:hover {
     font-size: 1rem;
 }
 
-#add-gift {
+#add-gift, #add-check {
     padding: 10px 16px;
     background: var(--pink);
     color: var(--white);
@@ -204,17 +219,17 @@ h3 a:hover {
     transition: 0.2s;
 }
 
-#add-gift:hover {
+#add-gift:hover, #add-check:hover {
     background: var(--violet);
     color: var(--white);
 }
 
-#gift-list {
+#gift-list, #check-list {
     list-style: none;
     padding: 0;
 }
 
-#gift-list li {
+#gift-list li, #check-list li {
     padding: 10px 14px;
     border-radius: 10px;
     margin-bottom: 8px;
@@ -232,4 +247,9 @@ h3 a:hover {
     border-radius: 6px;
     cursor: pointer;
     font-size: 0.8rem;
+}
+
+/* Digital Decoration */
+.deco-img {
+    max-width: 100%;
 }

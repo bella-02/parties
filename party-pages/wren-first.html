@@ -15,9 +15,10 @@
 
 
 <body>
-    <div class="container">
+    <div class="header">
         <h1>Wren's First Birthday</h1>
-        <p class="subtitle"></p>
+    </div>
+    <div class="container">
 
         <!-- Theme Ideas -->
         <section class="card">
@@ -51,21 +52,20 @@
 
         <!-- Checklist -->
         <section class="card">
-            <h2>📝 Checklist</h2>
-            <ul class="checklist">
-                <li><input type="checkbox"> Pick a theme</li>
-                <li><input type="checkbox"> Create guest list</li>
-                <li><input type="checkbox"> Order decorations</li>
-                <li><input type="checkbox"> Plan food + cake</li>
-                <li><input type="checkbox"> Choose outfit</li>
-                <li><input type="checkbox"> Set up photo area</li>
-                <li><input type="checkbox"> Plan activities</li>
-            </ul>
+            <h2>Party Prep Checklist</h2>
+        
+            <div class="checklist-input">
+                <input id="check-text" type="text" placeholder="Add a task...">
+                <button id="add-check">Add Task</button>
+            </div>
+        
+            <ul id="check-list"></ul>
         </section>
+        
 
         <!-- Inspiration Links -->
         <section class="card">
-            <h2>💖 Inspiration Links</h2>
+            <h2>Inspiration Links</h2>
             <div class="links">
                 <a href="https://www.instagram.com/explore/tags/firstbirthday/" target="_blank">Instagram Inspo</a>
                 <a href="https://www.pinterest.com/search/pins/?q=first%20birthday%20party" target="_blank">Pinterest
@@ -78,7 +78,7 @@
 
         <!-- Notes -->
         <section class="card">
-            <h2>🎁 Birthday Gift Ideas</h2>
+            <h2>Birthday Gift Ideas</h2>
 
             <div class="gift-input">
                 <input id="gift-text" type="text" placeholder="Add a gift idea...">
@@ -88,10 +88,27 @@
             <ul id="gift-list"></ul>
         </section>
 
+        <section class="card">
+            <h2>Pinterest Inspiration Board</h2>
+
+            <a data-pin-do="embedBoard" data-pin-board-width="800" data-pin-scale-height="240"
+                data-pin-scale-width="120"
+                href="https://www.pinterest.com/bellaevehunt/its-fun-to-be-one/?invite_code=c0062f45e35f4e96a2c8b944409f9ff8&sender=327214866584627036">
+            </a>
+        </section>
+
+        <section class="card">
+            <h2>Digital Decorations</h2>
+            <img class="deco-img" src="images/wren-1st-banner.png" alt="wren birthday banner">
+        </section>
+
+
 
     </div>
 </body>
 
 <script src="scripts/gifts.js"></script>
+<script async defer src="//assets.pinterest.com/js/pinit.js"></script>
+
 
 </html>
