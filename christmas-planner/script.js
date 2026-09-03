@@ -239,14 +239,41 @@ function renderBudget() {
 
   categories.innerHTML = planner.budgetCategories.length
     ? planner.budgetCategories
-        .map(
-          (category) => `
-            <div class="category-row">
-              <label for="category-${category.id}">${escapeHtml(category.name)}</label>
-              <input id="category-${category.id}" type="number" inputmode="decimal" min="0" step="1" value="${Number(category.amount) || 0}" data-category-amount="${category.id}" aria-label="${escapeHtml(category.name)} budget" />
-              ${deleteButton("budgetCategory", category.id, category.name)}
-            </div>`,
-        )
+        .map((category) => {
+          const categoryBudget = Number(category.amount) || 0;
+          const categorySpent = planner.expenses
+            .filter((expense) => expense.category === category.name)
+            .reduce((total, expense) => total + Number(expense.amount || 0), 0);
+          const categoryRemaining = categoryBudget - categorySpent;
+          const categoryPercent = categoryBudget ? Math.min((categorySpent / categoryBudget) * 100, 100) : 0;
+
+          return `
+            <div class="category-row ${categoryRemaining < 0 ? "over-budget" : ""}">
+              <div class="category-row-heading">
+                <div class="category-overview">
+                  <label for="category-${category.id}">${escapeHtml(category.name)}</label>
+                  <div class="category-progress" role="progressbar" aria-label="${escapeHtml(category.name)} spending" aria-valuemin="0" aria-valuemax="${Math.max(categoryBudget, categorySpent, 1)}" aria-valuenow="${categorySpent}" aria-valuetext="${formatCurrency(categorySpent, true)} spent of ${formatCurrency(categoryBudget, true)}">
+                    <span style="width: ${categoryPercent}%"></span>
+                  </div>
+                </div>
+                ${deleteButton("budgetCategory", category.id, category.name)}
+              </div>
+              <div class="category-metrics">
+                <div class="category-stat category-budget-stat">
+                  <span>Budget</span>
+                  <div class="category-budget-input"><span aria-hidden="true">$</span><input id="category-${category.id}" type="number" inputmode="decimal" min="0" step="0.01" value="${categoryBudget}" data-category-amount="${category.id}" aria-label="${escapeHtml(category.name)} budget" /></div>
+                </div>
+                <div class="category-stat">
+                  <span>Spent</span>
+                  <strong>${formatCurrency(categorySpent, true)}</strong>
+                </div>
+                <div class="category-stat category-left">
+                  <span>Left</span>
+                  <strong>${formatCurrency(categoryRemaining, true)}</strong>
+                </div>
+              </div>
+            </div>`;
+        })
         .join("")
     : emptyState("No categories yet", "Add a rough budget category below.");
 
@@ -406,7 +433,14 @@ document.querySelector("#gift-form").addEventListener("submit", (event) => {
 document.querySelector("#category-form").addEventListener("submit", (event) => {
   event.preventDefault();
   const data = new FormData(event.currentTarget);
-  planner.budgetCategories.push({ id: makeId(), name: data.get("name").trim(), amount: Number(data.get("amount")) || 0 });
+  const name = data.get("name").trim();
+  if (!name) return;
+  const duplicate = planner.budgetCategories.some((category) => category.name.toLocaleLowerCase() === name.toLocaleLowerCase());
+  if (duplicate) {
+    showToast(`${name} already has a budget category`);
+    return;
+  }
+  planner.budgetCategories.push({ id: makeId(), name, amount: Number(data.get("amount")) || 0 });
   event.currentTarget.reset();
   commit("Budget category added");
 });

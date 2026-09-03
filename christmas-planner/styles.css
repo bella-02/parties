@@ -1034,11 +1034,7 @@ textarea:focus {
 }
 
 .category-row {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) 104px 30px;
-  align-items: center;
-  gap: 8px;
-  padding: 8px 0;
+  padding: 14px 0;
   border-bottom: 1px solid rgba(222, 219, 208, 0.7);
 }
 
@@ -1046,14 +1042,102 @@ textarea:focus {
   border-bottom: 0;
 }
 
-.category-row label {
+.category-row-heading {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.category-overview {
+  min-width: 0;
+  flex: 1;
+}
+
+.category-overview label {
+  display: block;
+  overflow: hidden;
   color: var(--forest-900);
   font-size: 0.86rem;
   font-weight: 600;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
-.category-row input {
+.category-progress {
+  height: 6px;
+  margin-top: 9px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: var(--forest-100);
+}
+
+.category-progress span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--gold);
+  transition: width 220ms ease;
+}
+
+.category-row.over-budget .category-progress span {
+  background: var(--cranberry);
+}
+
+.category-metrics {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.category-stat {
+  min-width: 0;
+}
+
+.category-stat > span,
+.category-stat > strong {
+  display: block;
+}
+
+.category-stat > span {
+  margin-bottom: 5px;
+  color: var(--muted);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.category-stat > strong {
+  overflow: hidden;
+  color: var(--forest-900);
+  font-size: 0.78rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.category-row.over-budget .category-left > strong {
+  color: var(--cranberry);
+}
+
+.category-budget-input {
+  position: relative;
+}
+
+.category-budget-input > span {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  z-index: 1;
+  color: var(--muted);
+  font-size: 0.74rem;
+  transform: translateY(-50%);
+}
+
+.category-budget-input input {
   min-height: 38px;
+  padding: 0 8px 0 22px;
+  font-size: 0.78rem;
 }
 
 .mini-form {
@@ -1515,6 +1599,14 @@ td {
 
   .budget-totals {
     grid-template-columns: 1fr;
+  }
+
+  .category-metrics {
+    gap: 6px;
+  }
+
+  .gift-controls {
+    padding: 0;
   }
 
   .day-plan-card {
